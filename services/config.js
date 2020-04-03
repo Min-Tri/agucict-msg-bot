@@ -1,12 +1,4 @@
-/**
- * Copyright 2019-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * Messenger For Original Coast Clothing
- * https://developers.facebook.com/docs/messenger-platform/getting-started/sample-apps/original-coast-clothing
- */
+
 
 "use strict";
 
@@ -27,7 +19,7 @@ const ENV_VARS = [
 module.exports = {
   // Messenger Platform API
   mPlatformDomain: "https://graph.facebook.com",
-  mPlatformVersion: "v3.2",
+  mPlatformVersion: "v6.0",
 
   // Page and Application information
   pageId: process.env.PAGE_ID,
@@ -59,21 +51,10 @@ module.exports = {
 
   get newPersonas() {
     return [
+
       {
-        name: "Jorge",
-        picture: `${this.appUrl}/personas/sales.jpg`
-      },
-      {
-        name: "Laura",
-        picture: `${this.appUrl}/personas/billing.jpg`
-      },
-      {
-        name: "Riandy",
-        picture: `${this.appUrl}/personas/order.jpg`
-      },
-      {
-        name: "Daniel",
-        picture: `${this.appUrl}/personas/care.jpg`
+        name: "Luffy",
+        picture: `${this.appUrl}/personas/.jpg`
       }
     ];
   },
@@ -82,34 +63,10 @@ module.exports = {
     this.personas[persona.name] = persona.id;
   },
 
-  get personaSales() {
-    let id = this.personas["Jorge"] || process.env.PERSONA_SALES;
+  get personaHelp() {
+    let id = this.personas["Luffy"] || process.env.PERSONA_HELP;
     return {
-      name: "Jorge",
-      id: id
-    };
-  },
-
-  get personaBilling() {
-    let id = this.personas["Laura"] || process.env.PERSONA_BILLING;
-    return {
-      name: "Laura",
-      id: id
-    };
-  },
-
-  get personaOrder() {
-    let id = this.personas["Riandy"] || process.env.PERSONA_ORDER;
-    return {
-      name: "Riandy",
-      id: id
-    };
-  },
-
-  get personaCare() {
-    let id = this.personas["Daniel"] || process.env.PERSONA_CARE;
-    return {
-      name: "Daniel",
+      name: "Luffy",
       id: id
     };
   },

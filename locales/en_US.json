@@ -1,6 +1,6 @@
 {
   "profile": {
-    "greeting": "Welcome to Original Coast Clothing {{user_first_name}}! Click get started to enjoy our sample automated messaging experience. If you want to build a similar one visit https://fb.me/get-sample-oc"
+    "greeting": "Welcome to us, {{user_first_name}}! Click get started to enjoy our automated messaging experience."
   },
   "menu": {
     "support": "Customer Support",
@@ -11,7 +11,7 @@
     "start_over": "Start over"
   },
   "get_started": {
-    "welcome": "Hi {{userFirstName}}! Welcome to Original Coast Clothing where you'll find styles for every occasion.",
+    "welcome": "Hi {{userFirstName}}! Welcome to us where you'll find styles for every occasion.",
     "guidance": "At any time, use the menu below to navigate through the features",
     "help": "What we can do to help you today?"
   },
@@ -54,7 +54,7 @@
     "issue": "Hi {{userFirstName}}, my name is {{agentFirstName}}, I'm here to assist you with any questions you might have about your {{topic}}.",
     "default": "Hi {{userFirstName}}, my name is {{agentFirstName}}, I'm here to assist you today. How can I help you?",
     "style": "Hi {{userFirstName}}, my name is {{agentFirstName}}, I’m here to answer questions you might have on our summer styles",
-    "end": "This is as far as the demo goes. Leverage the power of the messenger platform for your business. See https://fb.me/get-sample-oc to learn how to build a similar experience",
+    
     "help": "Help"
   },
   "survey": {

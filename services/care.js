@@ -1,12 +1,4 @@
-/**
- * Copyright 2019-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * Messenger For Original Coast Clothing
- * https://developers.facebook.com/docs/messenger-platform/getting-started/sample-apps/original-coast-clothing
- */
+
 
 "use strict";
 
@@ -54,16 +46,12 @@ module.exports = class Care {
           Response.genTextWithPersona(
             i18n.__("care.issue", {
               userFirstName: this.user.firstName,
-              agentFirstName: config.personaOrder.name,
+              agentFirstName: config.personaHelp.name,
               topic: i18n.__("care.order")
             }),
-            config.personaOrder.id
+            config.personaHelp.id
           ),
-          Response.genTextWithPersona(
-            i18n.__("care.end"),
-            config.personaOrder.id
-          ),
-          Survey.genAgentRating(config.personaOrder.name)
+          Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -74,16 +62,12 @@ module.exports = class Care {
           Response.genTextWithPersona(
             i18n.__("care.issue", {
               userFirstName: this.user.firstName,
-              agentFirstName: config.personaBilling.name,
+              agentFirstName: config.personaHelp.name,
               topic: i18n.__("care.billing")
-            }),
-            config.personaBilling.id
-          ),
-          Response.genTextWithPersona(
-            i18n.__("care.end"),
-            config.personaBilling.id
-          ),
-          Survey.genAgentRating(config.personaBilling.name)
+            }),            
+            config.personaHelp.id
+          ),          
+          Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -93,16 +77,12 @@ module.exports = class Care {
         response = [
           Response.genTextWithPersona(
             i18n.__("care.style", {
-              userFirstName: this.user.firstName,
-              agentFirstName: config.personaSales.name
-            }),
-            config.personaSales.id
-          ),
-          Response.genTextWithPersona(
-            i18n.__("care.end"),
-            config.personaSales.id
-          ),
-          Survey.genAgentRating(config.personaSales.name)
+              userFirstName: this.user.firstName,              
+              agentFirstName: config.personaHelp.name
+            }),            
+            config.personaHelp.id
+          ),          
+          Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -112,16 +92,12 @@ module.exports = class Care {
         response = [
           Response.genTextWithPersona(
             i18n.__("care.default", {
-              userFirstName: this.user.firstName,
-              agentFirstName: config.personaCare.name
-            }),
-            config.personaCare.id
-          ),
-          Response.genTextWithPersona(
-            i18n.__("care.end"),
-            config.personaCare.id
-          ),
-          Survey.genAgentRating(config.personaCare.name)
+              userFirstName: this.user.firstName,              
+              agentFirstName: config.personaHelp.name,
+            }),            
+            config.personaHelp.id
+          ),          
+          Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
     }

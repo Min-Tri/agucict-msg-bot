@@ -1,12 +1,4 @@
-/**
- * Copyright 2019-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * Messenger For Original Coast Clothing
- * https://developers.facebook.com/docs/messenger-platform/getting-started/sample-apps/original-coast-clothing
- */
+
 
 "use strict";
 
@@ -193,10 +185,11 @@ app.get("/profile", (req, res) => {
           to your environment variables:</p>"
         );
         res.write("<ul>");
-        res.write(`<li>PERSONA_BILLING = ${config.personaBilling.id}</li>`);
-        res.write(`<li>PERSONA_CARE = ${config.personaCare.id}</li>`);
-        res.write(`<li>PERSONA_ORDER = ${config.personaOrder.id}</li>`);
-        res.write(`<li>PERSONA_SALES = ${config.personaSales.id}</li>`);
+        // res.write(`<li>PERSONA_BILLING = ${config.personaBilling.id}</li>`);
+        // res.write(`<li>PERSONA_CARE = ${config.personaCare.id}</li>`);
+        // res.write(`<li>PERSONA_ORDER = ${config.personaOrder.id}</li>`);
+        // res.write(`<li>PERSONA_SALES = ${config.personaSales.id}</li>`);
+        res.write(`<li>PERSONA_HELP = ${config.personaHelp.id}</li>`);
         res.write("</ul>");
       }
       if (mode == "nlp" || mode == "all") {
@@ -264,7 +257,7 @@ var listener = app.listen(config.port, function() {
   }
 
   if (config.pageId) {
-    console.log("Test your app by messaging:");
+    console.log("Test app by messaging:");
     console.log("https://m.me/" + config.pageId);
   }
 });
