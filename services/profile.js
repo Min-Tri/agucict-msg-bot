@@ -145,31 +145,42 @@ module.exports = class Profile {
       composer_input_disabled: false,
       call_to_actions: [
         {
-          title: i18n.__("menu.support"),
+          title: i18n.__("menu.introduce"),
           type: "nested",
           call_to_actions: [
+            // {
+            //   title: i18n.__("menu.order"),
+            //   type: "postback",
+            //   payload: "TRACK_ORDER"
+            // },            
+            // {
+            //   title: i18n.__("menu.help"),
+            //   type: "postback",
+            //   payload: "CARE_HELP"
+            // }
             {
-              title: i18n.__("menu.order"),
+              title: i18n.__("menu.educate"),
               type: "postback",
-              payload: "TRACK_ORDER"
+              payload: "CURATION"
             },
             {
-              title: i18n.__("menu.help"),
-              type: "postback",
-              payload: "CARE_HELP"
+              title: i18n.__("menu.register"),
+              type: "web_url",
+              url: config.mainUrl+"/dangkyhoc.cict",
+              webview_height_ratio: "full"
             }
           ]
-        },
-        {
-          title: i18n.__("menu.suggestion"),
-          type: "postback",
-          payload: "CURATION"
-        },
+        },        
         {
           type: "web_url",
-          title: i18n.__("menu.shop"),
-          url: config.shopUrl,
+          title: i18n.__("menu.mainpage"),
+          url: config.mainUrl,
           webview_height_ratio: "full"
+        },
+        {
+          title: i18n.__("menu.help"),
+          type: "postback",
+          payload: "CARE_HELP"
         }
       ]
     };

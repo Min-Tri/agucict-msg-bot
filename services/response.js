@@ -43,6 +43,89 @@ module.exports = class Response {
     return response;
   }
 
+  static genGenericTemplateLink(image_url, title, subtitle, url, buttons) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [
+            {
+              title: title,
+              subtitle: subtitle,
+              image_url: image_url,
+              default_action: {
+                type: "web_url",
+                url: url,
+                // messenger_extensions: true,
+                // webview_height_ratio: "FULL"
+              },
+              buttons: buttons
+            }
+          ]
+        }
+      }
+    };
+
+    return response;
+  }
+
+  static genGenericTemplateLinkLoopWithPersona(eles, persona_id) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: []
+        }
+      },
+      persona_id: persona_id
+    };
+    for (let ele of eles) {
+      response.attachment.payload["elements"].push({
+        title: ele["title"],
+        subtitle: ele["subtitle"],
+        // image_url: ele["image_url"],
+        default_action: {
+          type: "web_url",
+          url: ele["url"]
+        },
+        // buttons: ele["buttons"]
+      });
+    }
+    return response;
+  }
+
+  static genListWithPersona(buttons, eles, persona_id) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "list",//error:"list" can't work, fix this shit
+          // top_element_style: "compact",
+          elements: [],
+          buttons: buttons
+        }
+      },  
+      persona_id: persona_id
+    };
+
+    for (let ele of eles) {
+      response.attachment.payload["elements"].push({
+        title: ele["title"],
+        subtitle: ele["subtitle"],
+        // image_url: ele["image_url"],
+        default_action: {
+          type: "web_url",
+          url: ele["url"]
+        },
+        buttons: ele["buttons"]
+      });
+    }
+
+    return response;
+  }
+
   static genImageTemplate(image_url, title, subtitle = "") {
     let response = {
       attachment: {
@@ -95,6 +178,24 @@ module.exports = class Response {
     return response;
   }
 
+  static genQuickReplyWithPersona(text, quickReplies,persona_id) {
+    let response = {
+      text: text,
+      quick_replies: [],
+      persona_id: persona_id
+    };
+
+    for (let quickReply of quickReplies) {
+      response["quick_replies"].push({
+        content_type: "text",
+        title: quickReply["title"],
+        payload: quickReply["payload"]
+      });
+    }
+
+    return response;
+  }
+
   static genPostbackButton(title, payload) {
     let response = {
       type: "postback",
@@ -110,7 +211,7 @@ module.exports = class Response {
       type: "web_url",
       title: title,
       url: url,
-      messenger_extensions: true
+      // messenger_extensions: true
     };
 
     return response;
@@ -127,8 +228,12 @@ module.exports = class Response {
 
     let curation = this.genQuickReply(i18n.__("get_started.help"), [
       {
-        title: i18n.__("menu.suggestion"),
+        title: i18n.__("menu.educate"),
         payload: "CURATION"
+      },
+      {
+        title: i18n.__("menu.register"),        
+        payload: "LINK_ORDER"        
       },
       {
         title: i18n.__("menu.help"),

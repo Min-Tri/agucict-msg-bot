@@ -96,16 +96,16 @@ app.post("/webhook", (req, res) => {
 
       // Gets the body of the webhook event
       let webhookEvent = entry.messaging[0];
-      // console.log(webhookEvent);
+      //  console.log(webhookEvent);
 
       // Discard uninteresting events
       if ("read" in webhookEvent) {
-        // console.log("Got a read event");
+        //  console.log("Got a read event");
         return;
       }
 
       if ("delivery" in webhookEvent) {
-        // console.log("Got a delivery event");
+        //  console.log("Got a delivery event");
         return;
       }
 
@@ -189,6 +189,7 @@ app.get("/profile", (req, res) => {
         // res.write(`<li>PERSONA_CARE = ${config.personaCare.id}</li>`);
         // res.write(`<li>PERSONA_ORDER = ${config.personaOrder.id}</li>`);
         // res.write(`<li>PERSONA_SALES = ${config.personaSales.id}</li>`);
+        res.write(`<li>PERSONA_EDUCATE = ${config.personaEducate.id}</li>`);
         res.write(`<li>PERSONA_HELP = ${config.personaHelp.id}</li>`);
         res.write("</ul>");
       }

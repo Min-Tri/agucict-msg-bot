@@ -12,22 +12,22 @@ module.exports = class Order {
     let response;
 
     switch (payload) {
-      case "TRACK_ORDER":
-        response = Response.genQuickReply(i18n.__("order.prompt"), [
-          {
-            title: i18n.__("order.account"),
-            payload: "LINK_ORDER"
-          },
-          {
-            title: i18n.__("order.search"),
-            payload: "SEARCH_ORDER"
-          },
-          {
-            title: i18n.__("menu.help"),
-            payload: "CARE_ORDER"
-          }
-        ]);
-        break;
+      // case "TRACK_ORDER":
+      //   response = Response.genQuickReply(i18n.__("order.prompt"), [
+      //     {
+      //       title: i18n.__("order.account"),
+      //       payload: "LINK_ORDER"
+      //     },
+      //     {
+      //       title: i18n.__("order.search"),
+      //       payload: "SEARCH_ORDER"
+      //     },
+      //     {
+      //       title: i18n.__("menu.help"),
+      //       payload: "CARE_ORDER"
+      //     }
+      //   ]);
+      //   break;
 
       case "SEARCH_ORDER":
         response = Response.genText(i18n.__("order.number"));
@@ -40,15 +40,33 @@ module.exports = class Order {
         );
         break;
 
+      // case "LINK_ORDER":
+      //   response = [
+      //     Response.genText(i18n.__("order.dialog")),
+      //     Response.genText(i18n.__("order.searching")),
+      //     Response.genImageTemplate(
+      //       `${config.appUrl}/order.png`,
+      //       i18n.__("order.status")
+      //     )
+      //   ];
+      //   break;
       case "LINK_ORDER":
-        response = [
-          Response.genText(i18n.__("order.dialog")),
-          Response.genText(i18n.__("order.searching")),
-          Response.genImageTemplate(
-            `${config.appUrl}/order.png`,
-            i18n.__("order.status")
-          )
-        ];
+        response = Response.genGenericTemplateLink(
+          `${config.appUrl}/logo.png`,
+          "Trung tâm tin học",
+          "Phone: 02966.253.599\nĐịa chỉ: lầu 1, Khu Thư viện - Trung tâm,\nSố 18 Ung Văn Khiêm, P.Đông Xuyên, Tp.Long Xuyên, An Giang.",
+          `${config.mainUrl}`,
+          [
+            Response.genWebUrlButton(
+              i18n.__("menu.register"),
+              `${config.mainUrl}/dangkyhoc.cict`
+            ),
+            Response.genPostbackButton(
+              i18n.__("menu.help"),
+              "CARE_HELP"
+            )
+          ]
+        );
         break;
     }
 

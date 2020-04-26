@@ -29,7 +29,7 @@ module.exports = class Survey {
     );
 
     // This is triggered 4 sec after comming back from talking with an agent
-    response.delay = "4000";
+    response.delay = "20000";//4000
 
     return response;
   }

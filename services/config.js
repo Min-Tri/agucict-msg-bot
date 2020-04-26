@@ -13,7 +13,7 @@ const ENV_VARS = [
   "APP_SECRET",
   "VERIFY_TOKEN",
   "APP_URL",
-  "SHOP_URL"
+  "MAIN_URL"
 ];
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
   appUrl: process.env.APP_URL,
 
   // URL of your website
-  shopUrl: process.env.SHOP_URL,
+  mainUrl: process.env.MAIN_URL,
 
   // Persona IDs
   personas: {},
@@ -51,10 +51,13 @@ module.exports = {
 
   get newPersonas() {
     return [
-
       {
-        name: "Luffy",
-        picture: `${this.appUrl}/personas/.jpg`
+        name: "Bạn Trí giấu tên",
+        picture: `${this.appUrl}/personas/T.png`
+      },
+      {
+        name: "L",
+        picture: `${this.appUrl}/personas/L.png`
       }
     ];
   },
@@ -64,15 +67,23 @@ module.exports = {
   },
 
   get personaHelp() {
-    let id = this.personas["Luffy"] || process.env.PERSONA_HELP;
+    let id = this.personas["L"] || process.env.PERSONA_HELP;
     return {
-      name: "Luffy",
+      name: "L",
+      id: id
+    };
+  },
+
+  get personaEducate() {
+    let id = this.personas["Bạn Trí giấu tên"] || process.env.PERSONA_EDUCATE;
+    return {
+      name: "Bạn Trí giấu tên",
       id: id
     };
   },
 
   get whitelistedDomains() {
-    return [this.appUrl, this.shopUrl];
+    return [this.appUrl, this.mainUrl];
   },
 
   checkEnvVariables: function() {
@@ -81,7 +92,7 @@ module.exports = {
         console.log("WARNING: Missing the environment variable " + key);
       } else {
         // Check that urls use https
-        if (["APP_URL", "SHOP_URL"].includes(key)) {
+        if (["APP_URL", "MAIN_URL"].includes(key)) {
           const url = process.env[key];
           if (!url.startsWith("https://")) {
             console.log(

@@ -214,6 +214,41 @@ module.exports = class GraphAPi {
     });
   }
 
+  // static getPageProfileAPI() {
+  //   return new Promise(function(resolve, reject) {
+  //     let body = [];
+
+  //     // Send the GET request to the Page API :)
+  //     request({
+  //       uri: `${config.mPlatfom}/me`,
+  //       qs: {
+  //         access_token: config.pageAccesToken
+  //       },
+  //       method: "GET"
+  //     })
+  //       .on("response", function(response) {
+  //         // console.log(response.statusCode);
+
+  //         if (response.statusCode !== 200) {
+  //           reject(Error(response.statusCode));
+  //         }
+  //       })
+  //       .on("data", function(chunk) {
+  //         body.push(chunk);
+  //       })
+  //       .on("error", function(error) {
+  //         console.error("Unable to fetch profile:" + error);
+  //         reject(Error("Network Error"));
+  //       })
+  //       .on("end", () => {
+  //         body = Buffer.concat(body).toString();
+  //         // console.log(JSON.parse(body));
+
+  //         resolve(JSON.parse(body).data);
+  //       });
+  //   });
+  // }
+
   static postPersonaAPI(name, profile_picture_url) {
     let body = [];
 
@@ -290,9 +325,10 @@ module.exports = class GraphAPi {
         {
           _eventName: "postback_payload",
           _value: eventName,
-          _origin: "original_coast_clothing"
+          _origin: "messbot"
         }
       ]),
+      //origin change from "original_coast_clothing" :)
       advertiser_tracking_enabled: 1,
       application_tracking_enabled: 1,
       extinfo: JSON.stringify(["mb1"]),

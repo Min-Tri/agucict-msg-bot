@@ -94,8 +94,12 @@ module.exports = class Receive {
         Response.genText(i18n.__("get_started.guidance")),
         Response.genQuickReply(i18n.__("get_started.help"), [
           {
-            title: i18n.__("menu.suggestion"),
+            title: i18n.__("menu.educate"),
             payload: "CURATION"
+          },
+          {
+            title: i18n.__("menu.register"),        
+            payload: "LINK_ORDER"        
           },
           {
             title: i18n.__("menu.help"),
@@ -191,12 +195,12 @@ module.exports = class Receive {
         Response.genText(i18n.__("get_started.guidance")),
         Response.genQuickReply(i18n.__("get_started.help"), [
           {
-            title: i18n.__("care.order"),
-            payload: "CARE_ORDER"
+            title: i18n.__("care.study"),
+            payload: "CARE_STUDY"
           },
           {
-            title: i18n.__("care.billing"),
-            payload: "CARE_BILLING"
+            title: i18n.__("care.tech"),
+            payload: "CARE_TECH"
           },
           {
             title: i18n.__("care.other"),
@@ -218,16 +222,26 @@ module.exports = class Receive {
       i18n.__("get_started.guidance") + ". " +
       i18n.__("get_started.help");
 
-    let response = Response.genQuickReply(welcomeMessage, [
-      {
-        title: i18n.__("menu.suggestion"),
-        payload: "CURATION"
-      },
-      {
-        title: i18n.__("menu.help"),
-        payload: "CARE_HELP"
-      }
-    ]);
+    let response =[ 
+      Response.genQuickReply(welcomeMessage, [
+        // {
+        //   title: i18n.__("menu.suggestion"),
+        //   payload: "CURATION"
+        // },
+        {
+          title: i18n.__("menu.educate"),
+          payload: "CURATION"
+        },
+        {
+          title: i18n.__("menu.register"),        
+          payload: "LINK_ORDER"        
+        },
+        {
+          title: i18n.__("menu.help"),
+          payload: "CARE_HELP"
+        }
+      ])
+    ];
 
     let requestBody = {
       recipient: {

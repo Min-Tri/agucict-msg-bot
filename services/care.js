@@ -25,12 +25,16 @@ module.exports = class Care {
           }),
           [
             {
-              title: i18n.__("care.order"),
-              payload: "CARE_ORDER"
+              title: i18n.__("care.study"),
+              payload: "CARE_STUDY"
             },
             {
-              title: i18n.__("care.billing"),
-              payload: "CARE_BILLING"
+              title: i18n.__("care.tech"),
+              payload: "CARE_TECH"
+            },
+            {
+              title: i18n.__("care.examine"),
+              payload: "CARE_EXAMINE"
             },
             {
               title: i18n.__("care.other"),
@@ -39,15 +43,15 @@ module.exports = class Care {
           ]
         );
         break;
-      case "CARE_ORDER":
-        // Send using the Persona for order issues
+      case "CARE_STUDY":
+        // Send using the Persona for study issues
 
         response = [
           Response.genTextWithPersona(
             i18n.__("care.issue", {
               userFirstName: this.user.firstName,
               agentFirstName: config.personaHelp.name,
-              topic: i18n.__("care.order")
+              topic: i18n.__("care.study")
             }),
             config.personaHelp.id
           ),
@@ -55,28 +59,46 @@ module.exports = class Care {
         ];
         break;
 
-      case "CARE_BILLING":
-        // Send using the Persona for billing issues
+      case "CARE_TECH":
+        // Send using the Persona for tech issues
 
         response = [
           Response.genTextWithPersona(
             i18n.__("care.issue", {
               userFirstName: this.user.firstName,
               agentFirstName: config.personaHelp.name,
-              topic: i18n.__("care.billing")
+              topic: i18n.__("care.tech")
             }),            
             config.personaHelp.id
-          ),          
+          ),
+          // Response.genQuickReplyWithPersona(i18n.__("care.plapla"), [
+          //   {
+          //     title: i18n.__(`questions.q${i}`),
+          //     payload: ""
+          //   },
+          //   {
+          //     title: i18n.__(`questions.q${i}`),
+          //     payload: ""
+          //   }],
+          //   config.personaHelp.id
+          // ),          
           Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
-      case "CARE_SALES":
-        // Send using the Persona for sales questions
+      case "CARE_EXAMINE":
+        // Send using the Persona for M questions
 
         response = [
           Response.genTextWithPersona(
-            i18n.__("care.style", {
+            i18n.__("care.consider", {
+              userFirstName: this.user.firstName,              
+              agentFirstName: config.personaHelp.name
+            }),            
+            config.personaHelp.id
+          ),
+          Response.genTextWithPersona(
+            i18n.__("answers.a264", {
               userFirstName: this.user.firstName,              
               agentFirstName: config.personaHelp.name
             }),            
@@ -103,5 +125,8 @@ module.exports = class Care {
     }
 
     return response;
+  }
+  getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 };

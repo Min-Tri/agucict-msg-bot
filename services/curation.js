@@ -16,6 +16,7 @@ module.exports = class Curation {
   handlePayload(payload) {
     let response;
     let outfit;
+    let temp;
 
     switch (payload) {
       // case "SUMMER_COUPON":
@@ -62,105 +63,223 @@ module.exports = class Curation {
       //   break;
 
       case "CURATION":
-        response = Response.genQuickReply(i18n.__("curation.prompt"), [
+        response = Response.genQuickReplyWithPersona(i18n.__("curation.prompt"), [
           {
-            title: i18n.__("curation.me"),
-            payload: "CURATION_FOR_ME"
+            title: i18n.__("curation.longtime"),
+            payload: "CURATION_LONG_TIME"
           },
           {
-            title: i18n.__("curation.someone"),
-            payload: "CURATION_SOMEONE_ELSE"
-          }
-        ]);
+            title: i18n.__("curation.shorttime"),
+            payload: "CURATION_SHORT_TIME"
+          }],
+          config.personaHelp.id
+        );
         break;
 
-      case "CURATION_FOR_ME":
-      case "CURATION_SOMEONE_ELSE":
-        response = Response.genQuickReply(i18n.__("curation.occasion"), [
-          {
-            title: i18n.__("curation.work"),
-            payload: "CURATION_OCASION_WORK"
-          },
-          {
-            title: i18n.__("curation.dinner"),
-            payload: "CURATION_OCASION_DINNER"
-          },
-          {
-            title: i18n.__("curation.party"),
-            payload: "CURATION_OCASION_PARTY"
-          },
-          {
-            title: i18n.__("curation.sales"),
-            payload: "CARE_SALES"
-          }
-        ]);
+      case "CURATION_SHORT_TIME":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.netmanagement.title"),
+              subtitle: i18n.__("subject.netmanagement.subtitle"),
+              url: `${temp}/${i18n.__("subject.netmanagement.suburl")}`
+            },
+            {
+              title: i18n.__("subject.pcsetup.title"),
+              subtitle: i18n.__("subject.pcsetup.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcsetup.suburl")}`
+            },
+            {
+              title: i18n.__("subject.pcassembly.title"),
+              subtitle: i18n.__("subject.pcassembly.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcassembly.suburl")}`
+            },
+            {
+              title: i18n.__("subject.webdesign.title"),
+              subtitle: i18n.__("subject.webdesign.subtitle"),
+              url: `${temp}/${i18n.__("subject.webdesign.suburl")}`
+            },
+            {
+              title: i18n.__("subject.webprograming.title"),
+              subtitle: i18n.__("subject.webprograming.subtitle"),
+              url: `${temp}/${i18n.__("subject.webprograming.suburl")}`
+            },
+            {
+              title: i18n.__("subject.thesistech.title"),
+              subtitle: i18n.__("subject.thesistech.subtitle"),
+              url: `${temp}/${i18n.__("subject.thesistech.suburl")}`
+            },
+            {
+              title: i18n.__("subject.eleclesson.title"),
+              subtitle: i18n.__("subject.eleclesson.subtitle"),
+              url: `${temp}/${i18n.__("subject.eleclesson.suburl")}`
+            },
+            {
+              title: i18n.__("subject.photoshop.title"),
+              subtitle: i18n.__("subject.photoshop.subtitle"),
+              url: `${temp}/${i18n.__("subject.photoshop.suburl")}`
+            },
+            {
+              title: i18n.__("subject.android.title"),
+              subtitle: i18n.__("subject.android.subtitle"),
+              url: `${temp}/${i18n.__("subject.android.suburl")}`
+            },
+            {
+              title: i18n.__("subject.seo.title"),
+              subtitle: i18n.__("subject.seo.subtitle"),
+              url: `${temp}/${i18n.__("subject.seo.suburl")}`
+            }
+          ],
+          config.personaHelp.id
+          )
+          // Response.genTextWithPersona(i18n.__("get_started.guidance"),config.personaHelp.id),
+          // Response.genQuickReplyWithPersona(i18n.__("get_started.help"), [
+          //   {
+          //     title: i18n.__("menu.educate"),
+          //     payload: "CURATION"
+          //   },
+          //   {
+          //     title: i18n.__("menu.register"),        
+          //     payload: "LINK_ORDER"        
+          //   },
+          //   {
+          //     title: i18n.__("menu.help"),
+          //     payload: "CARE_HELP"
+          //   }
+          // ],
+          // config.personaHelp.id
+          // )          
+        ];
+        break;
+      case "CURATION_LONG_TIME":
+        response = [
+          Response.genTextWithPersona(
+            i18n.__("curation.subject"),
+            config.personaHelp.id
+          ),
+          Response.genTextWithPersona(
+            i18n.__("curation.plapla"),
+            config.personaHelp.id
+          ),
+          Response.genQuickReplyWithPersona(i18n.__("curation.show"), [
+            {
+              title: i18n.__("curation.normal"),
+              payload: "CURATION_NORMAL"
+            },
+            {
+              title: i18n.__("curation.train"),
+              payload: "CURATION_TRAIN"
+            },
+            {
+              title: i18n.__("curation.hard"),
+              payload: "CURATION_HARD"
+            }
+          ],config.personaHelp.id)
+        ];
         break;
 
-      case "CURATION_OCASION_WORK":
-        // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
-          {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_WORK"
-          },
-          {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_WORK"
-          },
-          {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_WORK"
-          }
-        ]);
+      case "CURATION_NORMAL":
+        temp =`${config.mainUrl}`;
+        response = [Response.genGenericTemplateLinkLoopWithPersona(
+        // response = [Response.genListWithPersona(
+          // Response.genWebUrlButton(
+          //   i18n.__("menu.register"),
+          //   `${temp}/dangkyhoc.cict`
+          // ),
+            [{
+              title: i18n.__("subject.normal.title"),
+              subtitle: i18n.__("subject.normal.subtitle"),
+              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              // )
+            },
+            {
+              title: i18n.__("subject.normal1.title"),
+              subtitle: i18n.__("subject.normal1.subtitle"),
+              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              // )
+            },
+            {
+              title: i18n.__("subject.normal2.title"),
+              subtitle: i18n.__("subject.normal2.subtitle"),
+              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              // )
+            }
+          ],config.personaHelp.id
+        )];
         break;
 
-      case "CURATION_OCASION_DINNER":
-        // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
-          {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_DINNER"
-          },
-          {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_DINNER"
-          },
-          {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_DINNER"
-          }
-        ]);
-        break;
+        case "CURATION_HARD":
+          temp =`${config.mainUrl}`;
+        response = [Response.genGenericTemplateLinkLoopWithPersona(
+          // response = [Response.genListWithPersona(
+            // Response.genWebUrlButton(
+            //   i18n.__("menu.register"),
+            //   `${config.mainUrl}/dangkyhoc.cict`
+            // ),
+              [{
+                title: i18n.__("subject.hard.title"),
+                subtitle: i18n.__("subject.hard.subtitle"),
+                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                // buttons: Response.genWebUrlButton(
+                //   i18n.__("curation.detail"),
+                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                // )
+              },
+              {
+                title: i18n.__("subject.hard1.title"),
+                subtitle: i18n.__("subject.hard1.subtitle"),
+                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                // buttons: Response.genWebUrlButton(
+                //   i18n.__("curation.detail"),
+                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                // )
+              },
+              {
+                title: i18n.__("subject.hard2.title"),
+                subtitle: i18n.__("subject.hard2.subtitle"),
+                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                // buttons: Response.genWebUrlButton(
+                //   i18n.__("curation.detail"),
+                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                // )
+              },
+              {
+                title: i18n.__("subject.hard3.title"),
+                subtitle: i18n.__("subject.hard3.subtitle"),
+                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                // buttons: Response.genWebUrlButton(
+                //   i18n.__("curation.detail"),
+                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                // )
+              }
+            ],config.personaHelp.id
+          )];
+          break;
 
-      case "CURATION_OCASION_PARTY":
-        // Store the user budget preference here
-        response = Response.genQuickReply(i18n.__("curation.price"), [
-          {
-            title: "~ $20",
-            payload: "CURATION_BUDGET_20_PARTY"
-          },
-          {
-            title: "~ $30",
-            payload: "CURATION_BUDGET_30_PARTY"
-          },
-          {
-            title: "+ $50",
-            payload: "CURATION_BUDGET_50_PARTY"
-          }
-        ]);
-        break;
-
-      case "CURATION_BUDGET_20_WORK":
-      case "CURATION_BUDGET_30_WORK":
-      case "CURATION_BUDGET_50_WORK":
-      case "CURATION_BUDGET_20_DINNER":
-      case "CURATION_BUDGET_30_DINNER":
-      case "CURATION_BUDGET_50_DINNER":
-      case "CURATION_BUDGET_20_PARTY":
-      case "CURATION_BUDGET_30_PARTY":
-      case "CURATION_BUDGET_50_PARTY":
-        response = this.genCurationResponse(payload);
-        break;
+        case "CURATION_TRAIN":
+          temp =`${config.mainUrl}`;
+          response = [
+            Response.genGenericTemplateLinkLoopWithPersona([
+              {
+                title: i18n.__("subject.train.title"),
+                subtitle: i18n.__("subject.train.subtitle"),
+                url: `${temp}/${i18n.__("subject.train.suburl")}`
+              }
+            ],config.personaHelp.id
+          )];
+          break;
+      //   response = this.genCurationResponse(payload);
+      //   break;
 
       // case "CURATION_OTHER_STYLE":
       //   // Build the recommendation logic here
@@ -183,41 +302,41 @@ module.exports = class Curation {
       //   );
       //   break;
     }
-
+    
     return response;
   }
 
-  genCurationResponse(payload) {
-    let occasion = payload.split("_")[3].toLowerCase();
-    let budget = payload.split("_")[2].toLowerCase();
-    let outfit = `${this.user.gender}-${occasion}`;
+  // genCurationResponse(payload) {
+  //   let occasion = payload.split("_")[3].toLowerCase();
+  //   let budget = payload.split("_")[2].toLowerCase();
+  //   let outfit = `${this.user.gender}-${occasion}`;
 
-    let buttons = [
-      // Response.genWebUrlButton(
-      //   i18n.__("curation.shop"),
-      //   `${config.shopUrl}/products/${outfit}`
-      // ),
-      // Response.genPostbackButton(
-      //   i18n.__("curation.show"),
-      //   "CURATION_OTHER_STYLE"
-      // )
-    ];
+  //   let buttons = [
+  //     Response.genWebUrlButton(
+  //       i18n.__("curation.shop"),
+  //       `${config.shopUrl}/products/${outfit}`
+  //     ),
+  //     Response.genPostbackButton(
+  //       i18n.__("curation.show"),
+  //       "CURATION_OTHER_STYLE"
+  //     )
+  //   ];
 
-    if (budget === "50") {
-      buttons.push(
-        Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
-      );
-    }
+  //   if (budget === "50") {
+  //     buttons.push(
+  //       Response.genPostbackButton(i18n.__("curation.sales"), "CARE_SALES")
+  //     );
+  //   }
 
-    let response = Response.genGenericTemplate(
-      // `${config.appsUrl}/styles/${outfit}.jpg`,
-      i18n.__("curation.title"),
-      i18n.__("curation.subtitle"),
-      buttons
-    );
+  //   let response = Response.genGenericTemplate(
+  //     // `${config.appsUrl}/styles/${outfit}.jpg`,
+  //     i18n.__("curation.title"),
+  //     i18n.__("curation.subtitle"),
+  //     buttons
+  //   );
 
-    return response;
-  }
+  //   return response;
+  // }
 
   // randomOutfit() {
   //   let occasion = ["work", "party", "dinner"];
