@@ -8,7 +8,10 @@ const Curation = require("./curation"),
   Care = require("./care"),
   Survey = require("./survey"),
   GraphAPi = require("./graph-api"),
-  i18n = require("../i18n.config");
+  config = require("./config"),
+  i18n = require("../i18n.config"),
+  {interactive} = require('node-wit'),
+  wit = require("node-wit").Wit;
 
 module.exports = class Receive {
   constructor(user, webhookEvent) {
@@ -32,7 +35,19 @@ module.exports = class Receive {
         } else if (message.attachments) {
           responses = this.handleAttachmentMessage();
         } else if (message.text) {
-          responses = this.handleTextMessage();
+          this.handleTestMessage()
+          .then((responses)=>{
+            if (Array.isArray(responses)) {
+              let delay = 0;
+              for (let response of responses) {
+                this.sendMessage(response, delay * 2000);
+                delay++;
+              }
+            } else {
+              this.sendMessage(responses);
+            }
+          })
+          .catch(error=>{console.log("test error:", error)});
         }
       } else if (event.postback) {
         responses = this.handlePostback();
@@ -65,23 +80,39 @@ module.exports = class Receive {
       `${this.webhookEvent.message.text} for ${this.user.psid}`
     );
 
+    let client = new wit({ accessToken : config.witToken});
+
     // check greeting is here and is confident
     let greeting = this.firstEntity(this.webhookEvent.message.nlp, "greetings");
-
+       
     let message = this.webhookEvent.message.text.trim().toLowerCase();
 
+    // let learn = this.firstEntity(this.webhookEvent.message.nlp, "greeting");
+    
     let response;
+    // client.message(message, {})
+    // .then((data) => {
+    //     console.log('Yay, got Wit.ai response: ' + JSON.stringify(data));
+    // })
+    // .then(({entities}) => {
+    //   console.log(entities);
+    // })
+    // .catch(console.error);
+    // interactive(client);
+    const welcome = this.test(client,message,"greeting");
+    console.log(welcome);
+    // let help = this.test(client,message,"help").then(res =>(res&&res.confidence>0.8));
 
     if (
       (greeting && greeting.confidence > 0.8) ||
-      message.includes("start over") 
+       message.includes("start over") 
     ) {
       response = Response.genNuxMessage(this.user);
     } else if(Number(message)){
       response = Order.handlePayload("ORDER_NUMBER");
     } else if (message.includes("#")) {
       response = Survey.handlePayload("CSAT_SUGGESTION");
-    } else if (message.includes(i18n.__("care.help").toLowerCase())) {
+    } else if ((message.includes(i18n.__("care.help").toLowerCase()))) {
       let care = new Care(this.user, this.webhookEvent);
       response = care.handlePayload("CARE_HELP");
     } else {
@@ -287,5 +318,100 @@ module.exports = class Receive {
 
   firstEntity(nlp, name) {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
+  }
+  firstEntityValue(entities, entity) {
+    return entities && entities[entity] &&
+      Array.isArray(entities[entity]) &&
+      entities[entity].length > 0 &&
+      entities[entity][0].value;
+  }
+  async test(client,message,entity){
+    let res;
+    try{
+      res= await client.message(message,{});
+      // console.log("async here: "+JSON.stringify(res));
+      res= this.firstEntity(res,entity);
+      // console.log(res);
+      res= (res&&res.confidence>0.8);
+    }catch(error){
+      console.error(error);
+      res= false;
+    }
+    console.log(res);
+    return res;
+    // .then((data) => {
+    //   let res= this.firstEntity(data,entity);
+    //   // console.log(res.confidence);
+    //   return (res&&(res.confidence>0.8));
+    // })
+    // .catch((error)=>{
+    //   console.error(error);
+    //   return false;
+    // });
+  }
+  newtest(res,entity){
+    try{
+      res= this.firstEntity(res,entity);
+      return res&&res.confidence>0.8;
+    }catch(error){
+      console.error(error);
+      return false;
+    }
+  }
+  async handleTestMessage() {
+    console.log(
+      "Received text:",
+      `${this.webhookEvent.message.text} for ${this.user.psid}`
+    );
+
+    let client = new wit({ accessToken : config.witToken});
+
+    // check greeting is here and is confident
+    let greeting = this.firstEntity(this.webhookEvent.message.nlp, "greetings");
+       
+    let message = this.webhookEvent.message.text.trim().toLowerCase();
+    
+    let response;
+    let res= await client.message(message, {})
+    let help = this.newtest(res,"help");
+    let welcome =this.newtest(res,"greeting")
+
+    if (
+      (greeting && greeting.confidence > 0.8) ||
+       welcome || message.includes("start over") 
+    ) {
+      response = Response.genNuxMessage(this.user);
+    } else if(Number(message)){
+      response = Order.handlePayload("ORDER_NUMBER");
+    } else if (message.includes("#")) {
+      response = Survey.handlePayload("CSAT_SUGGESTION");
+    } else if ((message.includes(i18n.__("care.help").toLowerCase()))||help) {
+      let care = new Care(this.user, this.webhookEvent);
+      response = care.handlePayload("CARE_HELP");
+    } else {
+      response = [
+        Response.genText(
+          i18n.__("fallback.any", {
+            message: this.webhookEvent.message.text
+          })
+        ),
+        Response.genText(i18n.__("get_started.guidance")),
+        Response.genQuickReply(i18n.__("get_started.help"), [
+          {
+            title: i18n.__("menu.educate"),
+            payload: "CURATION"
+          },
+          {
+            title: i18n.__("menu.register"),        
+            payload: "LINK_ORDER"        
+          },
+          {
+            title: i18n.__("menu.help"),
+            payload: "CARE_HELP"
+          }
+        ])
+      ];
+    }
+    return response;
   }
 };

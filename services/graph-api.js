@@ -303,7 +303,8 @@ module.exports = class GraphAPi {
         uri: `${config.mPlatfom}/me/nlp_configs`,
         qs: {
           access_token: config.pageAccesToken,
-          nlp_enabled: true
+          nlp_enabled: true,
+          custom_token: config.witToken
         },
         method: "POST"
       },

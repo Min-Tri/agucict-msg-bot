@@ -34,6 +34,8 @@ module.exports = {
   // URL of your website
   mainUrl: process.env.MAIN_URL,
 
+  witToken: process.env.WIT_TOKEN,
+
   // Persona IDs
   personas: {},
 
