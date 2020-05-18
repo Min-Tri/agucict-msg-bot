@@ -164,22 +164,22 @@ module.exports = class Curation {
           ),
           Response.genQuickReplyWithPersona(i18n.__("curation.show"), [
             {
-              title: i18n.__("curation.normal"),
-              payload: "CURATION_NORMAL"
+              title: i18n.__("curation.basic"),
+              payload: "CURATION_BASIC"
             },
             {
-              title: i18n.__("curation.train"),
-              payload: "CURATION_TRAIN"
+              title: i18n.__("curation.refesher"),
+              payload: "CURATION_REFESHER"
             },
             {
-              title: i18n.__("curation.hard"),
-              payload: "CURATION_HARD"
+              title: i18n.__("curation.advanced"),
+              payload: "CURATION_ADVANCED"
             }
           ],config.personaHelp.id)
         ];
         break;
 
-      case "CURATION_NORMAL":
+      case "CURATION_BASIC":
         temp =`${config.mainUrl}`;
         response = [Response.genGenericTemplateLinkLoopWithPersona(
         // response = [Response.genListWithPersona(
@@ -188,37 +188,37 @@ module.exports = class Curation {
           //   `${temp}/dangkyhoc.cict`
           // ),
             [{
-              title: i18n.__("subject.normal.title"),
-              subtitle: i18n.__("subject.normal.subtitle"),
-              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              title: i18n.__("subject.basic.title"),
+              subtitle: i18n.__("subject.basic.subtitle"),
+              url: `${temp}/${i18n.__("subject.basic.suburl")}`
               // buttons: Response.genWebUrlButton(
               //   i18n.__("curation.detail"),
-              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              //   `${temp}/${i18n.__("subject.basic.suburl")}`
               // )
             },
             {
-              title: i18n.__("subject.normal1.title"),
-              subtitle: i18n.__("subject.normal1.subtitle"),
-              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              title: i18n.__("subject.basic1.title"),
+              subtitle: i18n.__("subject.basic1.subtitle"),
+              url: `${temp}/${i18n.__("subject.basic.suburl")}`
               // buttons: Response.genWebUrlButton(
               //   i18n.__("curation.detail"),
-              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              //   `${temp}/${i18n.__("subject.basic.suburl")}`
               // )
             },
             {
-              title: i18n.__("subject.normal2.title"),
-              subtitle: i18n.__("subject.normal2.subtitle"),
-              url: `${temp}/${i18n.__("subject.normal.suburl")}`
+              title: i18n.__("subject.basic2.title"),
+              subtitle: i18n.__("subject.basic2.subtitle"),
+              url: `${temp}/${i18n.__("subject.basic.suburl")}`
               // buttons: Response.genWebUrlButton(
               //   i18n.__("curation.detail"),
-              //   `${temp}/${i18n.__("subject.normal.suburl")}`
+              //   `${temp}/${i18n.__("subject.basic.suburl")}`
               // )
             }
           ],config.personaHelp.id
         )];
         break;
 
-        case "CURATION_HARD":
+        case "CURATION_ADVANCED":
           temp =`${config.mainUrl}`;
         response = [Response.genGenericTemplateLinkLoopWithPersona(
           // response = [Response.genListWithPersona(
@@ -227,53 +227,53 @@ module.exports = class Curation {
             //   `${config.mainUrl}/dangkyhoc.cict`
             // ),
               [{
-                title: i18n.__("subject.hard.title"),
-                subtitle: i18n.__("subject.hard.subtitle"),
-                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                title: i18n.__("subject.advanced.title"),
+                subtitle: i18n.__("subject.advanced.subtitle"),
+                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // buttons: Response.genWebUrlButton(
                 //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // )
               },
               {
-                title: i18n.__("subject.hard1.title"),
-                subtitle: i18n.__("subject.hard1.subtitle"),
-                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                title: i18n.__("subject.advanced1.title"),
+                subtitle: i18n.__("subject.advanced1.subtitle"),
+                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // buttons: Response.genWebUrlButton(
                 //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // )
               },
               {
-                title: i18n.__("subject.hard2.title"),
-                subtitle: i18n.__("subject.hard2.subtitle"),
-                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                title: i18n.__("subject.advanced2.title"),
+                subtitle: i18n.__("subject.advanced2.subtitle"),
+                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // buttons: Response.genWebUrlButton(
                 //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // )
               },
               {
-                title: i18n.__("subject.hard3.title"),
-                subtitle: i18n.__("subject.hard3.subtitle"),
-                url: `${temp}/${i18n.__("subject.hard.suburl")}`
+                title: i18n.__("subject.advanced3.title"),
+                subtitle: i18n.__("subject.advanced3.subtitle"),
+                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // buttons: Response.genWebUrlButton(
                 //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.hard.suburl")}`
+                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
                 // )
               }
             ],config.personaHelp.id
           )];
           break;
 
-        case "CURATION_TRAIN":
+        case "CURATION_REFESHER":
           temp =`${config.mainUrl}`;
           response = [
             Response.genGenericTemplateLinkLoopWithPersona([
               {
-                title: i18n.__("subject.train.title"),
-                subtitle: i18n.__("subject.train.subtitle"),
-                url: `${temp}/${i18n.__("subject.train.suburl")}`
+                title: i18n.__("subject.refesher.title"),
+                subtitle: i18n.__("subject.refesher.subtitle"),
+                url: `${temp}/${i18n.__("subject.refesher.suburl")}`
               }
             ],config.personaHelp.id
           )];

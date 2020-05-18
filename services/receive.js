@@ -319,11 +319,14 @@ module.exports = class Receive {
   firstEntity(nlp, name) {
     return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
   }
-  firstEntityValue(entities, entity) {
-    return entities && entities[entity] &&
+  firstEntityValue(entities, entity){
+    const val= entities && entities[entity] &&
       Array.isArray(entities[entity]) &&
       entities[entity].length > 0 &&
       entities[entity][0].value;
+      if(!val)
+        return null;  
+      return val;
   }
   async test(client,message,entity){
     let res;
@@ -372,22 +375,54 @@ module.exports = class Receive {
     let message = this.webhookEvent.message.text.trim().toLowerCase();
     
     let response;
-    let res= await client.message(message, {})
+    let res= await client.message(message, {});
     let help = this.newtest(res,"help");
-    let welcome =this.newtest(res,"greeting")
+    let welcome = this.newtest(res,"greeting");
+    let intent = this.newtest(res,"intent");
+    let subject = this.newtest(res,"subject");
+    let regis = this.newtest(res,"register");
+    
+    let edu = this.newtest(res,"educate");
+    console.log(res.entities);
+    let valintent=this.firstEntityValue(res.entities,"intent");
+    let valsubject=this.firstEntityValue(res.entities,"subject");
 
+    interactive(client);
+    
     if (
       (greeting && greeting.confidence > 0.8) ||
-       welcome || message.includes("start over") 
-    ) {
+       message.includes("start over"))
+    {
       response = Response.genNuxMessage(this.user);
     } else if(Number(message)){
       response = Order.handlePayload("ORDER_NUMBER");
-    } else if (message.includes("#")) {
-      response = Survey.handlePayload("CSAT_SUGGESTION");
-    } else if ((message.includes(i18n.__("care.help").toLowerCase()))||help) {
-      let care = new Care(this.user, this.webhookEvent);
-      response = care.handlePayload("CARE_HELP");
+    } else if(message.includes(i18n.__("menu.educate").toLowerCase())||edu){
+      let curation = new Curation(this.user, this.webhookEvent);
+      response = curation.handlePayload("CURATION");
+    } else if(message.includes(i18n.__("menu.register").toLowerCase())||regis){
+      let curation = new Curation(this.user, this.webhookEvent);
+      response = curation.handlePayload("LINK_ORDER");
+    } else if(subject){
+      let curation = new Curation(this.user, this.webhookEvent);
+      switch(valsubject){
+        case "Lớp chuyên đề":
+          response = curation.handlePayload("CURATION_SHORT_TIME");
+          break;
+        case "Ôn luyện CNTT cơ bản":
+          response = curation.handlePayload("CURATION_REFESHER");
+          break;
+        case "CNTT cơ bản":
+          response = curation.handlePayload("CURATION_BASIC");
+          break;
+        case "CNTT nâng cao":
+          response = curation.handlePayload("CURATION_ADVANCED");
+          break;
+      }
+    // } else if (message.includes("#")) {
+    //   response = Survey.handlePayload("CSAT_SUGGESTION");
+    // } else if ((message.includes(i18n.__("care.help").toLowerCase()))) {
+    //   let care = new Care(this.user, this.webhookEvent);
+    //   response = care.handlePayload("CARE_HELP");
     } else {
       response = [
         Response.genText(

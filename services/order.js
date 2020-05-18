@@ -54,7 +54,7 @@ module.exports = class Order {
         response = Response.genGenericTemplateLink(
           `${config.appUrl}/logo.png`,
           "Trung tâm tin học",
-          "Phone: 02966.253.599\nĐịa chỉ: lầu 1, Khu Thư viện - Trung tâm,\nSố 18 Ung Văn Khiêm, P.Đông Xuyên, Tp.Long Xuyên, An Giang.",
+          i18n.__("profile.address"),
           `${config.mainUrl}`,
           [
             Response.genWebUrlButton(

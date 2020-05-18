@@ -1,6 +1,7 @@
 {
 "profile": {
-	"greeting": "Chào mừng bạn đến với Trang {{pageName}}, {{user_first_name}}! Hãy nhấp vào nút Bắt đầu để chúng tôi có thể giúp bạn."
+	"greeting": "Chào mừng bạn đến với Trang {{pageName}}, {{user_first_name}}! Hãy nhấp vào nút Bắt đầu để chúng tôi có thể giúp bạn.",
+	"address": "Phone: 02966.253.599\nĐịa chỉ: lầu 1, Khu Thư viện - Trung tâm,\nSố 18 Ung Văn Khiêm, P.Đông Xuyên, Tp.Long Xuyên, An Giang."
 },
 "menu": {
 	"help": "Hỗ trợ",
@@ -15,13 +16,7 @@
 	"guidance": "Hãy sử dụng menu bên dưới bất cứ lúc nào để di chuyển giữa các tính năng",
 	"help": "Chúng tôi có thể giúp gì cho bạn nào?"
 },
-"leadgen": {
-	"promo": "Hi {{userFirstName}}! Giờ đây, công cuộc tìm kiếm trang phục như ý trở nên dễ dàng và tiện lợi hơn rất nhiều.",
-	"title": "Phiếu giảm giá 50%",
-	"subtitle": "Phiếu giảm giá của bạn đây",
-	"apply": "Áp dụng chiết khấu",
-	"coupon": "Đã thêm phiếu giảm giá vào cuộc trò chuyện này. Giờ thì bạn hãy xem thử bộ sưu tập mùa hè đang được chiết khấu nhé"
-},
+
 "curation": {
 	"prompt": "Trung tâm tin học thường xuyên khai giảng các lớp tin học ứng dụng cho mọi đối tượng. Các lớp đang chiêu sinh là:",
 	"subject": "Tuyệt! Mình bắt đầu thôi. Trước tiên, bạn nên biết các lớp có thể được chia thành nhiều phần khác nhau(môđun UI)",
@@ -29,43 +24,43 @@
 	"show": "Hãy tham khảo chi tiết về các lớp học sau:",
 	"longtime": "Tin học cơ bản,nâng cao",
 	"shorttime": "Chuyên đề ngắn hạn",
-	"normal": "CNTT cơ bản",
-	"hard": "CNTT nâng cao",
-	"train": "Ôn luyện CNTT cơ bản",
+	"basic": "CNTT cơ bản",
+	"advanced": "CNTT nâng cao",
+	"refesher": "Ôn luyện CNTT cơ bản",
 	"detail": "chi tiết"
 },
 "subject": {
-	"normal": {
+	"basic": {
 		"title": "Chuẩn kỹ năng sử dụng CNTT cơ bản",
 		"subtitle": "Số tiết:90\nĐơn giá:1.150.000đ\n7.5 tuần(đêm),4.5 tuần(ngày)",
 		"suburl": "chungchia.cict"
-},
-	"normal1": {
+	},
+	"basic1": {
 		"title": "Phần 1: Sử dụng máy tính và Internet",
 		"subtitle": "Số tiết:30\nĐơn giá:400.000đ\n2.5 tuần(đêm),1.5 tuần(ngày)"
 	},
-	"normal2": {
+	"basic2": {
 		"title": "Phần 2: Tin học văn phòng",
 		"subtitle": "Số tiết:60\nĐơn giá:750.000đ\n5 tuần(đêm),3 tuần(ngày)"
 	},
-	"hard": {
+	"advanced": {
 		"title": "Chuẩn kỹ năng sử dụng CNTT nâng cao",
 		"subtitle": "Số tiết:90\nĐơn giá:1.200.000đ\n7.5 tuần(đêm),4.5 tuần(ngày)",
 		"suburl": "content/chứng-chi-b-tin-học-văn-phòng"
 	},
-	"hard1": {
+	"advanced1": {
 		"title": "Phần 1: Xử lý văn bản nâng cao",
 		"subtitle": "Số tiết:30\nĐơn giá:400.000đ\n2.5 tuần(đêm),1.5 tuần(ngày)"
 	},
-	"hard2": {
+	"advanced2": {
 		"title": "Phần 2: Sử dụng bảng tính nâng cao",
 		"subtitle": "Số tiết:30\nĐơn giá:400.000đ\n2.5 tuần(đêm),1.5 tuần(ngày)"
 	},
-	"hard3": {
+	"advanced3": {
 		"title": "Phần 3: Sử dụng trình chiếu nâng cao",
 		"subtitle": "Số tiết:30\nĐơn giá:400.000đ\n2.5 tuần(đêm),1.5 tuần(ngày)"
 	},
-	"train": {
+	"refesher": {
 		"title": "Ôn luyện chuẩn kỹ năng sử dụng CNTT cơ bản",
 		"subtitle": "Số tiết:60\nĐơn giá:800.000đ\n5 tuần(đêm),3 tuần(ngày)",
 		"suburl": "chungchib.cict"
