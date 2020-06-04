@@ -71,7 +71,12 @@ module.exports = class Curation {
           {
             title: i18n.__("curation.shorttime"),
             payload: "CURATION_SHORT_TIME"
-          }],
+          },
+          {
+            title: i18.__("curation.forkid"),
+            payload: "CURATION_FOR_KID"
+          }
+          ],
           config.personaHelp.id
         );
         break;
@@ -218,89 +223,290 @@ module.exports = class Curation {
         )];
         break;
 
-        case "CURATION_ADVANCED":
-          temp =`${config.mainUrl}`;
-        response = [Response.genGenericTemplateLinkLoopWithPersona(
-          // response = [Response.genListWithPersona(
-            // Response.genWebUrlButton(
-            //   i18n.__("menu.register"),
-            //   `${config.mainUrl}/dangkyhoc.cict`
-            // ),
-              [{
-                title: i18n.__("subject.advanced.title"),
-                subtitle: i18n.__("subject.advanced.subtitle"),
-                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // buttons: Response.genWebUrlButton(
-                //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // )
-              },
-              {
-                title: i18n.__("subject.advanced1.title"),
-                subtitle: i18n.__("subject.advanced1.subtitle"),
-                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // buttons: Response.genWebUrlButton(
-                //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // )
-              },
-              {
-                title: i18n.__("subject.advanced2.title"),
-                subtitle: i18n.__("subject.advanced2.subtitle"),
-                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // buttons: Response.genWebUrlButton(
-                //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // )
-              },
-              {
-                title: i18n.__("subject.advanced3.title"),
-                subtitle: i18n.__("subject.advanced3.subtitle"),
-                url: `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // buttons: Response.genWebUrlButton(
-                //   i18n.__("curation.detail"),
-                //   `${temp}/${i18n.__("subject.advanced.suburl")}`
-                // )
-              }
-            ],config.personaHelp.id
-          )];
-          break;
+      case "CURATION_ADVANCED":
+        temp =`${config.mainUrl}`;
+      response = [Response.genGenericTemplateLinkLoopWithPersona(
+        // response = [Response.genListWithPersona(
+          // Response.genWebUrlButton(
+          //   i18n.__("menu.register"),
+          //   `${config.mainUrl}/dangkyhoc.cict`
+          // ),
+            [{
+              title: i18n.__("subject.advanced.title"),
+              subtitle: i18n.__("subject.advanced.subtitle"),
+              url: `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // )
+            },
+            {
+              title: i18n.__("subject.advanced1.title"),
+              subtitle: i18n.__("subject.advanced1.subtitle"),
+              url: `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // )
+            },
+            {
+              title: i18n.__("subject.advanced2.title"),
+              subtitle: i18n.__("subject.advanced2.subtitle"),
+              url: `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // )
+            },
+            {
+              title: i18n.__("subject.advanced3.title"),
+              subtitle: i18n.__("subject.advanced3.subtitle"),
+              url: `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // buttons: Response.genWebUrlButton(
+              //   i18n.__("curation.detail"),
+              //   `${temp}/${i18n.__("subject.advanced.suburl")}`
+              // )
+            }
+          ],config.personaHelp.id
+        )];
+        break;
 
-        case "CURATION_REFESHER":
-          temp =`${config.mainUrl}`;
-          response = [
-            Response.genGenericTemplateLinkLoopWithPersona([
-              {
-                title: i18n.__("subject.refesher.title"),
-                subtitle: i18n.__("subject.refesher.subtitle"),
-                url: `${temp}/${i18n.__("subject.refesher.suburl")}`
-              }
-            ],config.personaHelp.id
-          )];
-          break;
-      //   response = this.genCurationResponse(payload);
-      //   break;
+      case "CURATION_REFESHER":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.refesher.title"),
+              subtitle: i18n.__("subject.refesher.subtitle"),
+              url: `${temp}/${i18n.__("subject.refesher.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_RFADVANCED":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.rfadvanced.title"),
+              subtitle: i18n.__("subject.rfadvanced.subtitle"),
+              url: `${temp}/${i18n.__("subject.rfadvanced.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_NETMANAGEMENT":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.netmanagement.title"),
+              subtitle: i18n.__("subject.netmanagement.subtitle"),
+              url: `${temp}/${i18n.__("subject.netmanagement.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_PCSETUP":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.pcsetup.title"),
+              subtitle: i18n.__("subject.pcsetup.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcsetup.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_PCASSEMBLY":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.pcassembly.title"),
+              subtitle: i18n.__("subject.pcassembly.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcassembly.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_WEBDESIGN":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.webdesign.title"),
+              subtitle: i18n.__("subject.webdesign.subtitle"),
+              url: `${temp}/${i18n.__("subject.webdesign.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_WEBPROGRAMING":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.webprograming.title"),
+              subtitle: i18n.__("subject.webprograming.subtitle"),
+              url: `${temp}/${i18n.__("subject.webprograming.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_THESISTECH":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.thesistech.title"),
+              subtitle: i18n.__("subject.thesistech.subtitle"),
+              url: `${temp}/${i18n.__("subject.thesistech.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_ELECLESSON":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.eleclesson.title"),
+              subtitle: i18n.__("subject.eleclesson.subtitle"),
+              url: `${temp}/${i18n.__("subject.eleclesson.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_PHOTOSHOP":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.photoshop.title"),
+              subtitle: i18n.__("subject.photoshop.subtitle"),
+              url: `${temp}/${i18n.__("subject.photoshop.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_ANDROID":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.android.title"),
+              subtitle: i18n.__("subject.android.subtitle"),
+              url: `${temp}/${i18n.__("subject.android.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_SEO":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.seo.title"),
+              subtitle: i18n.__("subject.seo.subtitle"),
+              url: `${temp}/${i18n.__("subject.seo.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_PCFORCHILD1":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.pcforchild1.title"),
+              subtitle: i18n.__("subject.pcforchild1.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcforchild1.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_PCFORCHILD2":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.pcforchild2.title"),
+              subtitle: i18n.__("subject.pcforchild2.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcforchild2.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
+      case "CURATION_CREATIVEPROGRAMING":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.creativeprograming.title"),
+              subtitle: i18n.__("subject.creativeprograming.subtitle"),
+              url: `${temp}/${i18n.__("subject.creativeprograming.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break;
 
-      // case "CURATION_OTHER_STYLE":
-      //   // Build the recommendation logic here
-      //   outfit = `${this.user.gender}-${this.randomOutfit()}`;
+    //   response = this.genCurationResponse(payload);
+    //   break;
 
-      //   response = Response.genGenericTemplate(
-      //     `${config.appUrl}/styles/${outfit}.jpg`,
-      //     i18n.__("curation.title"),
-      //     i18n.__("curation.subtitle"),
-      //     [
-      //       Response.genWebUrlButton(
-      //         i18n.__("curation.shop"),
-      //         `${config.shopUrl}/products/${outfit}`
-      //       ),
-      //       Response.genPostbackButton(
-      //         i18n.__("curation.show"),
-      //         "CURATION_OTHER_STYLE"
-      //       )
-      //     ]
-      //   );
-      //   break;
+    // case "CURATION_OTHER_STYLE":
+    //   // Build the recommendation logic here
+    //   outfit = `${this.user.gender}-${this.randomOutfit()}`;
+
+    //   response = Response.genGenericTemplate(
+    //     `${config.appUrl}/styles/${outfit}.jpg`,
+    //     i18n.__("curation.title"),
+    //     i18n.__("curation.subtitle"),
+    //     [
+    //       Response.genWebUrlButton(
+    //         i18n.__("curation.shop"),
+    //         `${config.shopUrl}/products/${outfit}`
+    //       ),
+    //       Response.genPostbackButton(
+    //         i18n.__("curation.show"),
+    //         "CURATION_OTHER_STYLE"
+    //       )
+    //     ]
+    //   );
+    //   break;
+      case "CURATION_FOR_KID":
+        temp =`${config.mainUrl}`;
+        response = [
+          Response.genGenericTemplateLinkLoopWithPersona([
+            {
+              title: i18n.__("subject.pcforchild1.title"),
+              subtitle: i18n.__("subject.pcforchild1.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcforchild1.suburl")}`
+            },
+            {
+              title: i18n.__("subject.pcforchild2.title"),
+              subtitle: i18n.__("subject.pcforchild2.subtitle"),
+              url: `${temp}/${i18n.__("subject.pcforchild2.suburl")}`
+            },
+            {
+              title: i18n.__("subject.creativeprograming.title"),
+              subtitle: i18n.__("subject.creativeprograming.subtitle"),
+              url: `${temp}/${i18n.__("subject.creativeprograming.suburl")}`
+            }
+          ],config.personaHelp.id
+        )];
+        break; 
+      case "CURATION_REEXAM":
+        response =[
+          Response.genTextWithPersona(
+            i18n.__("order.reexam.rule"),
+          ),
+          Response.genTextWithPersona(
+            i18n.__("order.reexam.plaplarule"),
+          ),config.personaHelp.id
+        ];
+        break;
     }
     
     return response;

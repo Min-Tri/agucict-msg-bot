@@ -48,6 +48,7 @@ module.exports = class Receive {
             }
           })
           .catch(error=>{console.log("test error:", error)});
+          // responses = this.handleTestMessage();
         }
       } else if (event.postback) {
         responses = this.handlePostback();
@@ -361,6 +362,198 @@ module.exports = class Receive {
       return false;
     }
   }
+  isSubject(valsubject){
+    let response;
+    let curation = new Curation(this.user, this.webhookEvent);
+    switch(valsubject){
+      case i18n.__("subject.specialclass"):
+        response = curation.handlePayload("CURATION_SHORT_TIME");
+        break;
+      case i18n.__("subject.refesher.entity"):
+        response = curation.handlePayload("CURATION_REFESHER");
+        break;
+      case i18n.__("subject.rfadvanced.entity"):
+        response = curation.handlePayload("CURATION_RFADVANCED");
+        break;
+      case i18n.__("subject.basic.entity"):
+        response = curation.handlePayload("CURATION_BASIC");
+        break;
+      case i18n.__("subject.advanced.entity"):
+        response = [
+          curation.handlePayload("CURATION_ADVANCED"),
+          Response.genTextWithPersona(
+            i18.__("subject.advanced.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.kids"):
+        response =[
+          Response.genQuickReplyWithPersona(
+            i18n.__("order.case.forkid"),
+            [
+              {
+                title: i18n.__("subject.pcforchild1.title"),
+                payload: "CURATION_PCFORCHILD1"
+              },
+              {
+                title: i18n.__("order.pcforchild2.title"),
+                payload: "CURATION_PCFORCHILD2"
+              }
+            ],
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.rf"):
+        response =[
+          Response.genQuickReplyWithPersona(
+            i18n.__("order.case.refesher"),
+            [
+              {
+                title: i18n.__("order.case.refesherbasic"),
+                payload: "CURATION_REFESHER"
+              },
+              {
+                title: i18n.__("order.case.refesheradvance"),
+                payload: "CURATION_RFADVANCED"
+              }
+            ],
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.creativeprograming.title"):
+        response = [
+          curation.handlePayload("CURATION_CREATIVEPROGRAM"),
+          Response.genTextWithPersona(
+            i18.__("subject.creativeprograming.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.pcforchild2.entity"):
+        response = [
+          curation.handlePayload("CURATION_PCFORCHILD2"),
+          Response.genTextWithPersona(
+            i18.__("subject.pcforchild2.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.pcforchild1.entity"):
+        response = [
+          curation.handlePayload("CURATION_PCFORCHILD1"),
+          Response.genTextWithPersona(
+            i18.__("subject.pcforchild1.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.seo.title"):
+        response = [
+          curation.handlePayload("CURATION_SEO"),
+          Response.genTextWithPersona(
+            i18.__("subject.seo.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.android.title"):
+        response = [
+          curation.handlePayload("CURATION_ANDROID"),
+          Response.genTextWithPersona(
+            i18.__("subject.android.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.photoshop.cd"):
+        response = [
+          curation.handlePayload("CURATION_PHOTOSHOP"),
+          Response.genTextWithPersona(
+            i18.__("subject.uncondition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.photoshop.pts"):
+        response = [
+          curation.handlePayload("CURATION_PHOTOSHOP"),
+          Response.genTextWithPersona(
+            i18.__("subject.uncondition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.eleclesson.title"):
+        response = [
+          curation.handlePayload("CURATION_ELECLESSON"),
+          Response.genTextWithPersona(
+            i18.__("subject.uncondition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.thesistech.title"):
+        response = [
+          curation.handlePayload("CURATION_THESISTECH"),
+          Response.genTextWithPersona(
+            i18.__("subject.uncondition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.webprograming.title"):
+        response = [
+          curation.handlePayload("CURATION_WEBPROGRAMING"),
+          Response.genTextWithPersona(
+            i18.__("subject.webprograming.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.webdesign.title"):
+        response = [
+          curation.handlePayload("CURATION_WEBDESIGN"),
+          Response.genTextWithPersona(
+            i18.__("subject.webdesign.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.pcassembly.title"):
+        response = [
+          curation.handlePayload("CURATION_PCASSEMBLY"),
+          Response.genTextWithPersona(
+            i18.__("subject.uncondition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.pcsetup.title"):
+        response = [
+          curation.handlePayload("CURATION_PCSETUP"),
+          Response.genTextWithPersona(
+            i18.__("subject.pcsetup.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+      case i18n.__("subject.netmanagement.title"):
+        response = [
+          curation.handlePayload("CURATION_WEBMANAGEMENT"),
+          Response.genTextWithPersona(
+            i18.__("subject.netmanagement.condition"),
+            config.personaHelp.id
+          )
+        ];
+        break;
+    }
+    return response;
+  }
+
+  //test handle mess with wit
   async handleTestMessage() {
     console.log(
       "Received text:",
@@ -375,48 +568,362 @@ module.exports = class Receive {
     let message = this.webhookEvent.message.text.trim().toLowerCase();
     
     let response;
-    let res= await client.message(message, {});
+    let res = await client.message(message, {});
+
+    // const data = client.message(message, {})
+    // .then(data=> (data))
+    // .catch(error=>{console.log("test error:", error)});
+    
+    // console.log('data ne', data);
+    
     let help = this.newtest(res,"help");
     let welcome = this.newtest(res,"greeting");
     let intent = this.newtest(res,"intent");
     let subject = this.newtest(res,"subject");
     let regis = this.newtest(res,"register");
+    let tuition = this.newtest(res,"tuition");
+    let examschedule = this.newtest(res,"examschedule");
+    let examine = this.newtest(res,"examine");
+    let tempcertificate = this.newtest(res,"tempcertificate");
+    let certificate = this.newtest(res,"certificate");
+    let examresult = this.newtest(res,"examresult");
+    let reexam = this.newtest(res,"reexam");
+    let learningcondition = this.newtest(res,"learningcondition");
+    let nextcourse = this.newtest(res,"nextcourse");
     
     let edu = this.newtest(res,"educate");
     console.log(res.entities);
     let valintent=this.firstEntityValue(res.entities,"intent");
     let valsubject=this.firstEntityValue(res.entities,"subject");
+    let valregis=this.firstEntityValue(res.entities,"register");
 
-    interactive(client);
+    // interactive(client);
     
     if (
       (greeting && greeting.confidence > 0.8) ||
-       message.includes("start over"))
+       message.includes("start over")||welcome)
     {
       response = Response.genNuxMessage(this.user);
-    } else if(Number(message)){
-      response = Order.handlePayload("ORDER_NUMBER");
-    } else if(message.includes(i18n.__("menu.educate").toLowerCase())||edu){
+    // } else if(Number(message)){
+    //   response = Order.handlePayload("ORDER_NUMBER");
+    } else if(intent){
       let curation = new Curation(this.user, this.webhookEvent);
-      response = curation.handlePayload("CURATION");
-    } else if(message.includes(i18n.__("menu.register").toLowerCase())||regis){
-      let curation = new Curation(this.user, this.webhookEvent);
-      response = curation.handlePayload("LINK_ORDER");
-    } else if(subject){
-      let curation = new Curation(this.user, this.webhookEvent);
-      switch(valsubject){
-        case "Lớp chuyên đề":
-          response = curation.handlePayload("CURATION_SHORT_TIME");
+      let care = new Care(this.user, this.webhookEvent);
+      let temp =`${config.mainUrl}`;
+      switch(valintent){
+        case i18n.__("intent.examschedule"):
+          response = [
+            Response.genTextWithPersona(
+              i18.__("order.examschedule.next"),
+              config.personaHelp.id
+            ),
+            Response.genGenericTemplateLinkLoopWithPersona(
+              {
+                title: i18n.__("order.examschedule.title"),
+                subtitle: i18n.__("order.examschedule.subtitle"),
+                url: `${temp}/${i18n.__("order.examschedule.suburl")}`
+              },
+              config.personaHelp.id
+            ),
+            Response.genTextWithPersona(
+              i18.__("order.plapla"),
+              config.personaHelp.id
+            )
+          ];
           break;
-        case "Ôn luyện CNTT cơ bản":
-          response = curation.handlePayload("CURATION_REFESHER");
+        case i18n.__("intent.detail"):
+          response = [
+            this.isSubject(valsubject),
+            Response.genTextWithPersona(
+              i18n.__("order.case.detail",{subject : valsubject}),
+              config.personaHelp.id
+            ),
+          ];
           break;
-        case "CNTT cơ bản":
-          response = curation.handlePayload("CURATION_BASIC");
+        case i18n.__("intent.tuition"):
+          if(subject){
+            response = [
+              Response.genTextWithPersona(
+                i18n.__("order.tuition.subject",{subject : valsubject}),
+                config.personaHelp.id
+              ),
+              this.isSubject(valsubject)
+            ];
+          }
+          if(!subject){
+            response = [
+              Response.genTextWithPersona(
+                i18n.__("order.tuition.nosj"),
+                config.personaHelp.id
+              )
+            ];
+          }
           break;
-        case "CNTT nâng cao":
-          response = curation.handlePayload("CURATION_ADVANCED");
+        case i18n.__("intent.condition"):
+          if(subject){
+            response = [
+              Response.genTextWithPersona(
+                i18n.__("order.condition.subject",{subject : valsubject}),
+                config.personaHelp.id
+              ),
+              this.isSubject(valsubject)
+            ];
+          }
+          if(!subject){
+            response = [
+              Response.genTextWithPersona(
+                i18n.__("order.condition.nosj"),
+                config.personaHelp.id
+              )
+            ];
+          }
+        case i18n.__("intent.examine"):
+          response = care.handlePayload("CARE_EXAMINE");
           break;
+        case i18n.__("intent.reexam"):
+          response = [
+            Response.genButtonTemplateWithPersona(
+              i18n.__("order.reexam.safedetail"),
+              Response.genPostbackButton(i18n.__("order.reexam.from"), "CURATION_REEXAM"),
+              config.personaHelp.id
+            )
+          ]
+        case i18n.__("intent.result"):
+          response = [
+            Response.genTextWithPersona(
+              i18.__("order.examresult.next"),
+              config.personaHelp.id
+            ),
+            Response.genGenericTemplateLinkLoopWithPersona(
+              {
+                title: i18n.__("order.examresult.title"),
+                subtitle: i18n.__("order.examresult.subtitle"),
+                url: `${temp}/${i18n.__("order.examresult.suburl")}`
+              },
+              config.personaHelp.id
+            ),
+            Response.genTextWithPersona(
+              i18.__("order.plapla"),
+              config.personaHelp.id
+            ),
+          ];
+          break;
+        case i18n.__("intent.tempcertificate"):
+          response = [
+            Response.genTextWithPersona(
+              i18.__("order.tempcertificate.plapla"),
+              config.personaHelp.id
+            ),
+            Response.genTextWithPersona(
+              i18.__("order.plapla"),
+              config.personaHelp.id
+            )
+          ];
+          break;
+        case i18n.__("intent.certificate"):
+          response = Response.genTextWithPersona(
+            i18n.__("order.certificate"),
+            config.personaHelp.id
+          )
+          break;
+        case i18n.__("intent.nextcourse"):
+          response = [
+            Response.genTextWithPersona(
+              i18.__("order.nextcourse.next"),
+              config.personaHelp.id
+            ),
+            Response.genGenericTemplateLinkLoopWithPersona(
+              {
+                title: i18n.__("order.nextcourse.title"),
+                subtitle: i18n.__("order.nextcourse.subtitle"),
+                url: `${temp}/${i18n.__("order.nextcourse.suburl")}`
+              },
+              config.personaHelp.id
+            )
+          ];
+          break;
+      }
+    } else if (!intent){
+      if(examschedule){
+          response = [
+            Response.genTextWithPersona(
+              i18.__("order.examschedule.next"),
+              config.personaHelp.id
+            ),
+            Response.genGenericTemplateLinkLoopWithPersona(
+              {
+                title: i18n.__("order.examschedule.title"),
+                subtitle: i18n.__("order.examschedule.subtitle"),
+                url: `${temp}/${i18n.__("order.examschedule.suburl")}`
+              },
+              config.personaHelp.id
+            ),
+            Response.genTextWithPersona(
+              i18.__("order.plapla"),
+              config.personaHelp.id
+            )
+          ];
+          // break;
+      } else if(tuition){
+        if(subject){
+          response = [
+            Response.genTextWithPersona(
+              i18n.__("order.tuition.subject",{subject : valsubject}),
+              config.personaHelp.id
+            ),
+            this.isSubject(valsubject)
+          ];
+        }
+        if(!subject){
+          response = [
+            Response.genTextWithPersona(
+              i18n.__("order.tuition.nosj"),
+              config.personaHelp.id
+            )
+          ];
+        }
+        // break;
+      } else if(learningcondition){
+        if(subject){
+          response = [
+            Response.genTextWithPersona(
+              i18n.__("order.condition.subject",{subject : valsubject}),
+              config.personaHelp.id
+            ),
+            this.isSubject(valsubject)
+          ];
+        }
+        if(!subject){
+          response = [
+            Response.genTextWithPersona(
+              i18n.__("order.condition.nosj"),
+              config.personaHelp.id
+            )
+          ];
+        }
+      } else if(examine){
+        response = care.handlePayload("CARE_EXAMINE");
+        // break;
+      } else if(reexam){
+        response = [
+          Response.genButtonTemplateWithPersona(
+            i18n.__("order.reexam.safedetail"),
+            Response.genPostbackButton(i18n.__("order.reexam.from"), "CURATION_REEXAM"),
+            config.personaHelp.id
+          )
+        ]
+      } else if(examresult){
+        response = [
+          Response.genTextWithPersona(
+            i18.__("order.examresult.next"),
+            config.personaHelp.id
+          ),
+          Response.genGenericTemplateLinkLoopWithPersona(
+            {
+              title: i18n.__("order.examresult.title"),
+              subtitle: i18n.__("order.examresult.subtitle"),
+              url: `${temp}/${i18n.__("order.examresult.suburl")}`
+            },
+            config.personaHelp.id
+          ),
+          Response.genTextWithPersona(
+            i18.__("order.plapla"),
+            config.personaHelp.id
+          ),
+        ];
+        // break;
+      } else if(tempcertificate){
+        response = [
+          Response.genTextWithPersona(
+            i18.__("order.tempcertificate.plapla"),
+            config.personaHelp.id
+          ),
+          Response.genTextWithPersona(
+            i18.__("order.plapla"),
+            config.personaHelp.id
+          )
+        ];
+        // break;
+      } else if(certificate){
+        response = Response.genTextWithPersona(
+          i18n.__("order.certificate"),
+          config.personaHelp.id
+        )
+        // break;
+      } else if(nextcourse){
+        response = [
+          Response.genTextWithPersona(
+            i18.__("order.nextcourse.next"),
+            config.personaHelp.id
+          ),
+          Response.genGenericTemplateLinkLoopWithPersona(
+            {
+              title: i18n.__("order.nextcourse.title"),
+              subtitle: i18n.__("order.nextcourse.subtitle"),
+              url: `${temp}/${i18n.__("order.nextcourse.suburl")}`
+            },
+            config.personaHelp.id
+          )
+        ];
+        // break;
+      } else if(message.includes(i18n.__("menu.educate").toLowerCase())||edu){
+        let curation = new Curation(this.user, this.webhookEvent);
+        if(subject){
+          response = [
+            Response.genTextWithPersona(
+              i18n.__("order.case.detail",{subject : valsubject}),
+              config.personaHelp.id
+            ),
+            this.isSubject(valsubject)
+          ];
+        }
+        else{
+          response = [
+            curation.handlePayload("CURATION")
+          ];
+        }
+        // break;
+      } else if(message.includes(i18n.__("menu.register").toLowerCase())||regis){
+        // response = Order.handlePayload("LINK_ORDER");
+        switch(valregis){
+          case "hạn đăng ký":
+            response = Response.genTextWithPersona(
+              i18n.__("order.regis.timeout"),
+              config.personaHelp.id
+            );
+            break;
+          case "đăng ký":
+            response = Order.handlePayload("LINK_ORDER");
+            break;  
+          case "đăng ký thi":
+            response = [
+              Response.genTextWithPersona(
+                i18n.__("order.regis.fee"),
+                config.personaHelp.id
+              ),
+              Response.genTextWithPersona(
+                i18n.__("order.regis.pay"),
+                config.personaHelp.id
+              ),
+              Response.genTextWithPersona(
+                i18n.__("order.regis.other"),
+                config.personaHelp.id
+              )
+            ];
+            break;
+          case "đăng ký học":
+            response = Order.handlePayload("LINK_ORDER");
+            break;
+        }
+      } else if(subject){
+        response = [
+          this.isSubject(valsubject),
+          Response.genTextWithPersona(
+            i18n.__("order.case.detail",{subject : valsubject}),
+            config.personaHelp.id
+          ),
+        ];
+        // break;
       }
     // } else if (message.includes("#")) {
     //   response = Survey.handlePayload("CSAT_SUGGESTION");

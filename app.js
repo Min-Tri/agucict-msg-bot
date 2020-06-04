@@ -189,7 +189,7 @@ app.get("/profile", (req, res) => {
         // res.write(`<li>PERSONA_CARE = ${config.personaCare.id}</li>`);
         // res.write(`<li>PERSONA_ORDER = ${config.personaOrder.id}</li>`);
         // res.write(`<li>PERSONA_SALES = ${config.personaSales.id}</li>`);
-        res.write(`<li>PERSONA_EDUCATE = ${config.personaEducate.id}</li>`);
+        // res.write(`<li>PERSONA_EDUCATE = ${config.personaEducate.id}</li>`);
         res.write(`<li>PERSONA_HELP = ${config.personaHelp.id}</li>`);
         res.write("</ul>");
       }

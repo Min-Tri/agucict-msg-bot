@@ -161,6 +161,22 @@ module.exports = class Response {
     return response;
   }
 
+  static genButtonTemplateWithPersona(title, buttons,persona_id) {
+    let response = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: title,
+          buttons: buttons
+        }
+      },
+      persona_id: persona_id
+    };
+
+    return response;
+  }
+
   static genText(text) {
     let response = {
       text: text

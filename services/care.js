@@ -19,7 +19,7 @@ module.exports = class Care {
 
     switch (payload) {
       case "CARE_HELP":
-        response = Response.genQuickReply(
+        response = Response.genQuickReplyWithPersona(
           i18n.__("care.prompt", {
             userFirstName: this.user.firstName
           }),
@@ -40,7 +40,8 @@ module.exports = class Care {
               title: i18n.__("care.other"),
               payload: "CARE_OTHER"
             }
-          ]
+          ],
+          config.personaHelp.id
         );
         break;
       case "CARE_STUDY":
@@ -55,7 +56,7 @@ module.exports = class Care {
             }),
             config.personaHelp.id
           ),
-          Survey.genAgentRating(config.personaHelp.name)
+          // Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -82,7 +83,7 @@ module.exports = class Care {
           //   }],
           //   config.personaHelp.id
           // ),          
-          Survey.genAgentRating(config.personaHelp.name)
+          // Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -104,7 +105,7 @@ module.exports = class Care {
             }),            
             config.personaHelp.id
           ),          
-          Survey.genAgentRating(config.personaHelp.name)
+          // Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -119,7 +120,7 @@ module.exports = class Care {
             }),            
             config.personaHelp.id
           ),          
-          Survey.genAgentRating(config.personaHelp.name)
+          // Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
     }
