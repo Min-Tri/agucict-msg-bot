@@ -366,19 +366,19 @@ module.exports = class Receive {
     let response;
     let curation = new Curation(this.user, this.webhookEvent);
     switch(valsubject){
-      case i18n.__("subject.specialclass"):
+      case "Lớp chuyên đề":
         response = curation.handlePayload("CURATION_SHORT_TIME");
         break;
-      case i18n.__("subject.refesher.entity"):
+      case "Ôn luyện CNTT cơ bản":
         response = curation.handlePayload("CURATION_REFESHER");
         break;
-      case i18n.__("subject.rfadvanced.entity"):
+      case "Ôn luyện CNTT nâng cao":
         response = curation.handlePayload("CURATION_RFADVANCED");
         break;
-      case i18n.__("subject.basic.entity"):
+      case "CNTT cơ bản":
         response = curation.handlePayload("CURATION_BASIC");
         break;
-      case i18n.__("subject.advanced.entity"):
+      case "CNTT nâng cao":
         response = [
           curation.handlePayload("CURATION_ADVANCED"),
           Response.genTextWithPersona(
@@ -387,7 +387,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.kids"):
+      case "tin học cho trẻ":
         response =[
           Response.genQuickReplyWithPersona(
             i18n.__("order.case.forkid"),
@@ -405,7 +405,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.rf"):
+      case "lớp ôn luyện":
         response =[
           Response.genQuickReplyWithPersona(
             i18n.__("order.case.refesher"),
@@ -423,7 +423,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.creativeprograming.title"):
+      case "Lập trình sáng tạo":
         response = [
           curation.handlePayload("CURATION_CREATIVEPROGRAM"),
           Response.genTextWithPersona(
@@ -432,7 +432,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.pcforchild2.entity"):
+      case "Tin học trẻ em - Cấp độ 2":
         response = [
           curation.handlePayload("CURATION_PCFORCHILD2"),
           Response.genTextWithPersona(
@@ -441,7 +441,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.pcforchild1.entity"):
+      case "Tin học trẻ em - Cấp độ 1":
         response = [
           curation.handlePayload("CURATION_PCFORCHILD1"),
           Response.genTextWithPersona(
@@ -450,7 +450,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.seo.title"):
+      case "SEO":
         response = [
           curation.handlePayload("CURATION_SEO"),
           Response.genTextWithPersona(
@@ -459,7 +459,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.android.title"):
+      case "Lập trình android":
         response = [
           curation.handlePayload("CURATION_ANDROID"),
           Response.genTextWithPersona(
@@ -468,7 +468,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.photoshop.cd"):
+      case "Corel Draw":
         response = [
           curation.handlePayload("CURATION_PHOTOSHOP"),
           Response.genTextWithPersona(
@@ -477,7 +477,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.photoshop.pts"):
+      case "Đồ họa Photoshop":
         response = [
           curation.handlePayload("CURATION_PHOTOSHOP"),
           Response.genTextWithPersona(
@@ -486,7 +486,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.eleclesson.title"):
+      case "Kỹ thuật xây dựng giáo án điện tử":
         response = [
           curation.handlePayload("CURATION_ELECLESSON"),
           Response.genTextWithPersona(
@@ -495,7 +495,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.thesistech.title"):
+      case "Kỹ thuật trình bày luận văn":
         response = [
           curation.handlePayload("CURATION_THESISTECH"),
           Response.genTextWithPersona(
@@ -504,7 +504,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.webprograming.title"):
+      case "Lập trình Web":
         response = [
           curation.handlePayload("CURATION_WEBPROGRAMING"),
           Response.genTextWithPersona(
@@ -513,7 +513,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.webdesign.title"):
+      case "Thiết kế Web cơ bản":
         response = [
           curation.handlePayload("CURATION_WEBDESIGN"),
           Response.genTextWithPersona(
@@ -522,7 +522,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.pcassembly.title"):
+      case "Lắp ráp máy tính":
         response = [
           curation.handlePayload("CURATION_PCASSEMBLY"),
           Response.genTextWithPersona(
@@ -531,7 +531,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.pcsetup.title"):
+      case "Cài đặt máy tính":
         response = [
           curation.handlePayload("CURATION_PCSETUP"),
           Response.genTextWithPersona(
@@ -540,7 +540,7 @@ module.exports = class Receive {
           )
         ];
         break;
-      case i18n.__("subject.netmanagement.title"):
+      case "Quản trị mạng doanh nghiệp":
         response = [
           curation.handlePayload("CURATION_WEBMANAGEMENT"),
           Response.genTextWithPersona(
@@ -743,7 +743,7 @@ module.exports = class Receive {
           ];
           break;
       }
-    } else if (!intent){
+    } else if (!intent||1){
       if(examschedule){
           response = [
             Response.genTextWithPersona(
