@@ -54,10 +54,6 @@ module.exports = {
   get newPersonas() {
     return [
       {
-        name: "Bạn Trí giấu tên",
-        picture: `${this.appUrl}/personas/T.png`
-      },
-      {
         name: "L",
         picture: `${this.appUrl}/personas/L.png`
       }
@@ -72,14 +68,6 @@ module.exports = {
     let id = this.personas["L"] || process.env.PERSONA_HELP;
     return {
       name: "L",
-      id: id
-    };
-  },
-
-  get personaEducate() {
-    let id = this.personas["Bạn Trí giấu tên"] || process.env.PERSONA_EDUCATE;
-    return {
-      name: "Bạn Trí giấu tên",
       id: id
     };
   },

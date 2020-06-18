@@ -148,16 +148,6 @@ module.exports = class Profile {
           title: i18n.__("menu.introduce"),
           type: "nested",
           call_to_actions: [
-            // {
-            //   title: i18n.__("menu.order"),
-            //   type: "postback",
-            //   payload: "TRACK_ORDER"
-            // },            
-            // {
-            //   title: i18n.__("menu.help"),
-            //   type: "postback",
-            //   payload: "CARE_HELP"
-            // }
             {
               title: i18n.__("menu.educate"),
               type: "postback",

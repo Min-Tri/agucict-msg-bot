@@ -55,8 +55,7 @@ module.exports = class Care {
               topic: i18n.__("care.study")
             }),
             config.personaHelp.id
-          ),
-          // Survey.genAgentRating(config.personaHelp.name)
+          )
         ];
         break;
 
@@ -71,19 +70,7 @@ module.exports = class Care {
               topic: i18n.__("care.tech")
             }),            
             config.personaHelp.id
-          ),
-          // Response.genQuickReplyWithPersona(i18n.__("care.plapla"), [
-          //   {
-          //     title: i18n.__(`questions.q${i}`),
-          //     payload: ""
-          //   },
-          //   {
-          //     title: i18n.__(`questions.q${i}`),
-          //     payload: ""
-          //   }],
-          //   config.personaHelp.id
-          // ),          
-          // Survey.genAgentRating(config.personaHelp.name)
+          )  
         ];
         break;
 
@@ -105,7 +92,6 @@ module.exports = class Care {
             }),            
             config.personaHelp.id
           ),          
-          // Survey.genAgentRating(config.personaHelp.name)
         ];
         break;
 
@@ -119,8 +105,7 @@ module.exports = class Care {
               agentFirstName: config.personaHelp.name,
             }),            
             config.personaHelp.id
-          ),          
-          // Survey.genAgentRating(config.personaHelp.name)
+          ),        
         ];
         break;
     }
